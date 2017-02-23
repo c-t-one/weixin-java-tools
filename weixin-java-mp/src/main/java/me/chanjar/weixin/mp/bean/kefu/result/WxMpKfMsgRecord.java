@@ -1,10 +1,7 @@
 package me.chanjar.weixin.mp.bean.kefu.result;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.gson.annotations.SerializedName;
-import me.chanjar.weixin.mp.util.json.WxLongTimeJsonSerializer;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import me.chanjar.weixin.common.util.ToStringUtils;
 
 /**
  * Created by Binary Wang on 2016/7/18.
@@ -38,15 +35,15 @@ public class WxMpKfMsgRecord {
    * time	操作时间，unix时间戳
    */
   @SerializedName("time")
-  @JsonSerialize(using = WxLongTimeJsonSerializer.class)
   private Long time;
 
   @Override
   public String toString() {
-    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    return ToStringUtils.toSimpleString(this);
   }
+
   public String getWorker() {
-    return worker;
+    return this.worker;
   }
 
   public void setWorker(String worker) {
@@ -54,7 +51,7 @@ public class WxMpKfMsgRecord {
   }
 
   public String getOpenid() {
-    return openid;
+    return this.openid;
   }
 
   public void setOpenid(String openid) {
@@ -62,7 +59,7 @@ public class WxMpKfMsgRecord {
   }
 
   public String getText() {
-    return text;
+    return this.text;
   }
 
   public void setText(String text) {
@@ -70,7 +67,7 @@ public class WxMpKfMsgRecord {
   }
 
   public Long getTime() {
-    return time;
+    return this.time;
   }
 
   public void setTime(Long time) {
@@ -78,7 +75,7 @@ public class WxMpKfMsgRecord {
   }
 
   public Integer getOperateCode() {
-    return operateCode;
+    return this.operateCode;
   }
 
   public void setOperateCode(Integer operateCode) {

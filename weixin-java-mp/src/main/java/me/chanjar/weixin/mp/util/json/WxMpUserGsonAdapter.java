@@ -16,6 +16,7 @@ import java.lang.reflect.Type;
 
 public class WxMpUserGsonAdapter implements JsonDeserializer<WxMpUser> {
 
+  @Override
   public WxMpUser deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
     JsonObject o = json.getAsJsonObject();
     WxMpUser wxMpUser = new WxMpUser();
@@ -35,8 +36,9 @@ public class WxMpUserGsonAdapter implements JsonDeserializer<WxMpUser> {
     Integer sexId = GsonHelper.getInteger(o, "sex");
     wxMpUser.setRemark(GsonHelper.getString(o, "remark"));
     wxMpUser.setGroupId(GsonHelper.getInteger(o, "groupid"));
+    wxMpUser.setTagIds(GsonHelper.getIntArray(o, "tagid_list"));
     wxMpUser.setSexId(sexId);
-    if(new Integer(1).equals(sexId)) {
+    if (new Integer(1).equals(sexId)) {
       wxMpUser.setSex("男");
     } else if (new Integer(2).equals(sexId)) {
       wxMpUser.setSex("女");

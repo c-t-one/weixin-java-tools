@@ -22,16 +22,22 @@ public class XStreamInitializer {
           protected String SUFFIX_CDATA = "]]>";
           protected String PREFIX_MEDIA_ID = "<MediaId>";
           protected String SUFFIX_MEDIA_ID = "</MediaId>";
+
           @Override
           protected void writeText(QuickWriter writer, String text) {
-            if (text.startsWith(PREFIX_CDATA) && text.endsWith(SUFFIX_CDATA)) {
+            if (text.startsWith(this.PREFIX_CDATA) && text.endsWith(this.SUFFIX_CDATA)) {
               writer.write(text);
-            } else if (text.startsWith(PREFIX_MEDIA_ID) && text.endsWith(SUFFIX_MEDIA_ID)) {
+            } else if (text.startsWith(this.PREFIX_MEDIA_ID) && text.endsWith(this.SUFFIX_MEDIA_ID)) {
               writer.write(text);
             } else {
               super.writeText(writer, text);
             }
 
+          }
+
+          @Override
+          public String encodeNode(String name) {
+            return name;//防止将_转换成__
           }
         };
       }

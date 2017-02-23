@@ -1,9 +1,8 @@
 package me.chanjar.weixin.mp.bean.kefu.result;
 
 import com.google.gson.annotations.SerializedName;
+import me.chanjar.weixin.common.util.ToStringUtils;
 import me.chanjar.weixin.mp.util.json.WxMpGsonBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class WxMpKfMsgList {
   private Long msgId;
 
   public List<WxMpKfMsgRecord> getRecords() {
-    return records;
+    return this.records;
   }
 
   public void setRecords(List<WxMpKfMsgRecord> records) {
@@ -29,7 +28,7 @@ public class WxMpKfMsgList {
   }
 
   public Integer getNumber() {
-    return number;
+    return this.number;
   }
 
   public void setNumber(Integer number) {
@@ -37,7 +36,7 @@ public class WxMpKfMsgList {
   }
 
   public Long getMsgId() {
-    return msgId;
+    return this.msgId;
   }
 
   public void setMsgId(Long msgId) {
@@ -46,7 +45,7 @@ public class WxMpKfMsgList {
 
   @Override
   public String toString() {
-    return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    return ToStringUtils.toSimpleString(this);
   }
 
   public static WxMpKfMsgList fromJson(String responseContent) {

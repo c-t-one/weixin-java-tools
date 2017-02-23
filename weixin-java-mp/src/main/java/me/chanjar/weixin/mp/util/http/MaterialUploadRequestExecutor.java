@@ -5,10 +5,9 @@ import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.util.http.RequestExecutor;
 import me.chanjar.weixin.common.util.http.Utf8ResponseHandler;
 import me.chanjar.weixin.common.util.json.WxGsonBuilder;
-import me.chanjar.weixin.mp.bean.WxMpMaterial;
-import me.chanjar.weixin.mp.bean.result.WxMpMaterialUploadResult;
+import me.chanjar.weixin.mp.bean.material.WxMpMaterial;
+import me.chanjar.weixin.mp.bean.material.WxMpMaterialUploadResult;
 import org.apache.http.HttpHost;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -38,7 +37,7 @@ public class MaterialUploadRequestExecutor implements RequestExecutor<WxMpMateri
     if (file == null || !file.exists()) {
       throw new FileNotFoundException();
     }
-    
+
     MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
     multipartEntityBuilder
         .addBinaryBody("media", file)
@@ -47,7 +46,7 @@ public class MaterialUploadRequestExecutor implements RequestExecutor<WxMpMateri
     if (material.getForm() != null) {
       multipartEntityBuilder.addTextBody("description", WxGsonBuilder.create().toJson(form));
     }
-    
+
     httpPost.setEntity(multipartEntityBuilder.build());
     httpPost.setHeader("Content-Type", ContentType.MULTIPART_FORM_DATA.toString());
 

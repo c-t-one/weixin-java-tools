@@ -15,12 +15,11 @@ import me.chanjar.weixin.mp.bean.result.WxMpMassSendResult;
 import java.lang.reflect.Type;
 
 /**
- * 
  * @author Daniel Qian
- *
  */
 public class WxMpMassSendResultAdapter implements JsonDeserializer<WxMpMassSendResult> {
 
+  @Override
   public WxMpMassSendResult deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
     WxMpMassSendResult sendResult = new WxMpMassSendResult();
     JsonObject sendResultJsonObject = json.getAsJsonObject();
@@ -39,5 +38,5 @@ public class WxMpMassSendResultAdapter implements JsonDeserializer<WxMpMassSendR
     }
     return sendResult;
   }
-  
+
 }
